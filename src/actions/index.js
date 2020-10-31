@@ -8,4 +8,4 @@ export function fetchMessages() {
     type: 'FETCH_MESSAGES',
     payload: promise
   };
-} 
+}

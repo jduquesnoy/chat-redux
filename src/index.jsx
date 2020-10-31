@@ -32,7 +32,7 @@ const initialState = {
   currentUser: prompt("What is your username?") || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
   selectedChannel: 'general'
 };
-const middlewares = applyMiddleware(reduxPromise, logger); 
+const middlewares = applyMiddleware(reduxPromise, logger);
 // render an instance of the component in the DOM
 ReactDOM.render(
   <Provider store={createStore(reducers, {}, middlewares)}>

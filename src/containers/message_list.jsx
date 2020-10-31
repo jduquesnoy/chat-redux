@@ -1,16 +1,16 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
+import { fetchMessages } from '../actions';
 // eslint-disable-next-line react/prefer-stateless-function
 import Message from '../components/message';
 
-import { fetchMessages } from '../actions';
+
 
 class MessageList extends Component {
   componentWillMount() {
-    debugger
-    this.fetchMessages('test');
+    this.props.fetchMessages();
   }
 
   render() {
