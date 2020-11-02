@@ -10,7 +10,7 @@ import Message from '../components/message';
 
 class MessageList extends Component {
   componentWillMount() {
-    this.props.fetchMessages();
+    // this.props.fetchMessages();
   }
 
   render() {
