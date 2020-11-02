@@ -9,3 +9,23 @@ export function fetchMessages() {
     payload: promise
   };
 }
+
+export function createMessage(author, content) {
+  // TODO
+  const url = 'https://wagon-chat.herokuapp.com/general/messages';
+  const body = { author, content }; // ES6 destructuring
+  const promise = fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }).then(r => r.json());
+
+  return {
+    type: 'MESSAGE_POSTED',
+    payload: promise // Will be resolved by redux-promise
+  };
+}
+
