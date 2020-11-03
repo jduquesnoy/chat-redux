@@ -1,7 +1,7 @@
 // TODO: add and export your own actions
 // eslint-disable-next-line import/prefer-default-export
-export function fetchMessages() {
-  const promise = fetch('https://wagon-chat.herokuapp.com/general/messages')
+export function fetchMessages(channel) {
+  const promise = fetch(`https://wagon-chat.herokuapp.com/${channel}/messages`)
     .then(response => response.json());
 
   return {
@@ -10,9 +10,9 @@ export function fetchMessages() {
   };
 }
 
-export function createMessage(author, content) {
+export function createMessage(channel, author, content) {
   // TODO
-  const url = 'https://wagon-chat.herokuapp.com/general/messages';
+  const url = `https://wagon-chat.herokuapp.com/${channel}/messages`;
   const body = { author, content }; // ES6 destructuring
   const promise = fetch(url, {
     method: 'POST',
@@ -26,6 +26,12 @@ export function createMessage(author, content) {
   return {
     type: 'MESSAGE_POSTED',
     payload: promise // Will be resolved by redux-promise
+  };
+}
+export function selectChannel(channel) {
+  return {
+    type: 'CHANNEL_SELECTED',
+    payload: channel
   };
 }
 

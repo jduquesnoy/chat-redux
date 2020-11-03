@@ -10,7 +10,7 @@ import Message from '../components/message';
 
 class MessageList extends Component {
   componentWillMount() {
-    this.props.fetchMessages();
+    this.props.fetchMessages(this.props.selectedChannel);
   }
 
   componentDidMount() {
@@ -43,5 +43,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchMessages: fetchMessages }, dispatch);
 }
 
-// export default FlatList;
 export default connect(mapStateToProps, mapDispatchToProps)(MessageList);
