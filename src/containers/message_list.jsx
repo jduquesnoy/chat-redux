@@ -13,9 +13,21 @@ class MessageList extends Component {
     this.props.fetchMessages();
   }
 
+  componentDidMount() {
+    this.refresher = setInterval(this.props.fetchMessages, 3000);
+  }
+
+  componentDidUpdate() {
+    this.list.scrollTop = this.list.scrollHeight;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.refresher);
+  }
+
   render() {
     return (
-      <div className="">
+      <div className="" ref={(list) => { this.list = list; }}>
         {this.props.messages.map((message) => {
           return <Message key={message.created_at} message={message} />;
         })}
