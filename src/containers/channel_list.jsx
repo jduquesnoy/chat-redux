@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import { selectChannel, fetchMessages } from '../actions/index';
 
 class ChannelList extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {};
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedChannel !== this.props.selectedChannel) {
+      this.props.fetchMessages(nextProps.selectedChannel);
+    }
   }
 
   handleClick = (channel) => {
