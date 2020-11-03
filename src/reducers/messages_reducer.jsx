@@ -12,9 +12,9 @@ const messagesReducer = (state, action) => {
       copiedState.push(action.payload);
       return copiedState;
     }
-    // case 'CHANNEL_SELECTED': {
-    //   return []; // Channel has changed. Clearing view.
-    // }
+    case 'CHANNEL_SELECTED': {
+      return []; // Channel has changed. Clearing view.
+    }
     default:
       return state;
   }
